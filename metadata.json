@@ -1,0 +1,6 @@
+{
+  "name": "NernstLab",
+  "description": "Smart Electrochemical Cell Potential Prediction & Visualization System powered by real-time Nernst Equation modeling, interactive cell animation, and dynamic Recharts graphs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

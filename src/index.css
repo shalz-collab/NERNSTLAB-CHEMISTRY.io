@@ -1,0 +1,188 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Default: Carbon Amber (Neutral Graphite Dark with Amber-Gold & Emerald precision accents — zero blue) */
+:root,
+[data-theme="carbon"] {
+  --bg-canvas: #111113;
+  --bg-surface: #18181B;
+  --bg-surface-elevated: #202024;
+  --bg-subtle: #26262B;
+  --bg-hero-from: #1D1C1A;
+  --bg-hero-via: #17171A;
+  --bg-hero-to: #131316;
+  --border-hairline: #2B2B31;
+  --border-strong: #3C3C44;
+  --text-primary: #F5F5F4;
+  --text-secondary: #C8C8C4;
+  --text-muted: #93939A;
+  --accent: #F59E0B;
+  --accent-hover: #D97706;
+  --accent-fg: #18130A;
+  --accent-soft: #292214;
+  --accent-border: #59441A;
+  --secondary-accent: #10B981;
+  --chart-grid: #29292F;
+  --chart-axis: #9E9EA6;
+  --chart-tooltip-bg: #18181B;
+  --chart-tooltip-border: #3C3C44;
+  --slider-track: #32323A;
+  --book-paper: #1C1B19;
+  --book-spine: #0C0C0E;
+}
+
+/* Ivory Paper (Crisp Daylight Laboratory White with Charcoal, Emerald & Amber — zero blue) */
+[data-theme="ivory"] {
+  --bg-canvas: #F6F5F0;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FAF9F5;
+  --bg-subtle: #EFECE3;
+  --bg-hero-from: #FFFFFF;
+  --bg-hero-via: #FAF8F2;
+  --bg-hero-to: #F3EFE4;
+  --border-hairline: #E4DFD3;
+  --border-strong: #CEC7B7;
+  --text-primary: #18181B;
+  --text-secondary: #44403C;
+  --text-muted: #78716C;
+  --accent: #D97706;
+  --accent-hover: #B45309;
+  --accent-fg: #FFFFFF;
+  --accent-soft: #FEF6E6;
+  --accent-border: #F4CE89;
+  --secondary-accent: #059669;
+  --chart-grid: #E8E3D8;
+  --chart-axis: #6B655E;
+  --chart-tooltip-bg: #FFFFFF;
+  --chart-tooltip-border: #D6CFC0;
+  --slider-track: #DFD9CB;
+  --book-paper: #FFFDF7;
+  --book-spine: #E4DEC9;
+}
+
+/* Forest Lab (Deep Botanical Pine Charcoal with Emerald & Gold — zero blue) */
+[data-theme="forest"] {
+  --bg-canvas: #0C1310;
+  --bg-surface: #131D18;
+  --bg-surface-elevated: #192620;
+  --bg-subtle: #1F3028;
+  --bg-hero-from: #15221C;
+  --bg-hero-via: #111B16;
+  --bg-hero-to: #0D1511;
+  --border-hairline: #23372D;
+  --border-strong: #324E40;
+  --text-primary: #F2FBF6;
+  --text-secondary: #BED8CA;
+  --text-muted: #84A996;
+  --accent: #34D399;
+  --accent-hover: #10B981;
+  --accent-fg: #071911;
+  --accent-soft: #133124;
+  --accent-border: #256147;
+  --secondary-accent: #FBBF24;
+  --chart-grid: #20332A;
+  --chart-axis: #8CB09E;
+  --chart-tooltip-bg: #131D18;
+  --chart-tooltip-border: #324E40;
+  --slider-track: #253B30;
+  --book-paper: #14201A;
+  --book-spine: #080E0B;
+}
+
+@layer base {
+  html,
+  body {
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    background-color: var(--bg-canvas);
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .dark body {
+    letter-spacing: 0.008em;
+  }
+}
+
+/* Custom scientific range slider styling */
+input[type="range"].lab-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--slider-track);
+  outline: none;
+}
+
+input[type="range"].lab-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--accent);
+  border: 2px solid var(--bg-surface);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), background-color 150ms ease;
+}
+
+input[type="range"].lab-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+  background: var(--accent-hover);
+}
+
+input[type="range"].lab-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--accent);
+  border: 2px solid var(--bg-surface);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), background-color 150ms ease;
+}
+
+input[type="range"].lab-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.lab-input {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+}
+.lab-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #18181b !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-break-avoid {
+    break-inside: avoid;
+  }
+}
